@@ -70,6 +70,8 @@ fn testAnyascii(expectedAscii: []const u8, utf8str: []const u8) !void {
 test utf8ToAscii {
 	// These examples are taken from anyascii examples, see https://github.com/anyascii/anyascii/tree/master#examples
 
+	try testUtf8ToAscii("a ", "à ");
+	try testUtf8ToAscii("a", "à");
 	try testUtf8ToAscii("Rene Francois Lacote", "René François Lacôte");
 	try testUtf8ToAscii("Blosse", "Blöße");
 	try testUtf8ToAscii("Tran Hung Dao", "Trần Hưng Đạo");
