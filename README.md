@@ -30,6 +30,25 @@ defer allocator.free(ascii);
 std.debug.print("{s}", .{ascii}); // Output: "Blosse".
 ```
 
+### Install
+
+In your project directory:
+
+```shell
+zig fetch --save https://code.zeptotech.net/zedd/anyascii.zig/archive/v1.0.0.tar.gz
+```
+
+In `build.zig`:
+
+```zig
+// Add anyascii.zig dependency.
+const anyascii = b.dependency("anyascii", .{
+	.target = target,
+	.optimize = optimize,
+});
+exe.root_module.addImport("anyascii", anyascii.module("anyascii"));
+```
+
 ## What is anyascii?
 
 Taken from [official _anyascii_ description](https://github.com/anyascii/anyascii/tree/master#description).
