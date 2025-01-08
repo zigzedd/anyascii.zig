@@ -42,7 +42,7 @@ In `build.zig`:
 
 ```zig
 // Add anyascii.zig dependency.
-const anyascii = b.dependency("anyascii", .{
+const anyascii = b.dependency("anyascii.zig", .{
 	.target = target,
 	.optimize = optimize,
 });
