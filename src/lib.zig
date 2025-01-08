@@ -5,7 +5,7 @@ const c = @cImport({
 });
 
 /// Convert a unicode codepoint to its ascii equivalent.
-pub fn anyascii(allocator: std.mem.Allocator, codepoint: u21) ![]const u8 {
+pub fn anyascii(allocator: std.mem.Allocator, codepoint: u21) ![]u8 {
 	// Call C anyascii function.
 	var cChars: [*]u8 = undefined;
 	const charsCount = c.anyascii(codepoint, @ptrCast(&cChars));
@@ -31,7 +31,7 @@ pub fn anyasciiWrite(writer: std.io.AnyWriter, codepoint: u21) !void {
 }
 
 /// Convert a given UTF-8 string to its ASCII equivalent using anyascii.
-pub fn utf8ToAscii(allocator: std.mem.Allocator, str: []const u8) ![]const u8 {
+pub fn utf8ToAscii(allocator: std.mem.Allocator, str: []const u8) ![]u8 {
 	// Get a UTF8 iterator.
 	var iterator = (try std.unicode.Utf8View.init(str)).iterator();
 
