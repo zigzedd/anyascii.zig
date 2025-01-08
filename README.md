@@ -22,7 +22,7 @@ std.debug.print("{s}", .{ascii}); // Output: "F".
 
 ```zig
 const std = @import("std");
-const anyascii = @import("anyascii").utf8ToAscii;
+const utf8ToAscii = @import("anyascii").utf8ToAscii;
 
 // A full string of UTF-8 characters to ASCII characters.
 const ascii = try utf8ToAscii(allocator, "Blöße");
