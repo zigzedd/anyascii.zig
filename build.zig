@@ -5,7 +5,7 @@ pub fn build(b: *std.Build) void {
 	const optimize = b.standardOptimizeOption(.{});
 
 	// Anyascii zig module.
-	const anyascii = b.addModule("anyascii", .{
+	const anyascii = b.createModule(.{
 		.root_source_file = b.path("src/lib.zig"),
 		.target = target,
 		.optimize = optimize,
@@ -18,14 +18,9 @@ pub fn build(b: *std.Build) void {
 
 	// Library unit tests.
 	const lib_unit_tests = b.addTest(.{
-		.root_source_file = b.path("src/lib.zig"),
+		.root_module = anyascii,
 		.target = target,
 		.optimize = optimize,
-	});
-	lib_unit_tests.linkLibC();
-	lib_unit_tests.addIncludePath(b.path("anyascii"));
-	lib_unit_tests.addCSourceFile(.{
-		.file = b.path("anyascii/anyascii.c"),
 	});
 	const run_lib_unit_tests = b.addRunArtifact(lib_unit_tests);
 

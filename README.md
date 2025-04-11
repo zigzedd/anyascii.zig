@@ -35,14 +35,14 @@ std.debug.print("{s}", .{ascii}); // Output: "Blosse".
 In your project directory:
 
 ```shell
-zig fetch --save https://code.zeptotech.net/zedd/anyascii.zig/archive/v1.1.0.tar.gz
+zig fetch --save https://code.zeptotech.net/zedd/anyascii.zig/archive/v1.2.0.tar.gz
 ```
 
 In `build.zig`:
 
 ```zig
-// Add anyascii.zig dependency.
-const anyascii = b.dependency("anyascii.zig", .{
+// Add anyascii dependency.
+const anyascii = b.dependency("anyascii", .{
 	.target = target,
 	.optimize = optimize,
 });
