@@ -5,7 +5,7 @@ pub fn build(b: *std.Build) void {
 	const optimize = b.standardOptimizeOption(.{});
 
 	// Anyascii zig module.
-	const anyascii = b.createModule(.{
+	const anyascii = b.addModule("anyascii", .{
 		.root_source_file = b.path("src/lib.zig"),
 		.target = target,
 		.optimize = optimize,
